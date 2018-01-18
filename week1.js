@@ -89,3 +89,69 @@ function highAndLow(numbers){
   return `${Math.max(...numbers)} ${Math.min(...numbers)}`;
 }
 
+
+//task4 Reversed Words
+//https://www.codewars.com/kata/reversed-words/train/javascript
+//Complete the solution so that it reverses all of the words within the string passed in.
+
+//my
+function reverseWords(str){
+   var arr = str.split(' ');
+    var temp;
+    var len = arr.length;
+    for (let j = 0; j < arr.length; j++) {
+      for (let j = 0; j < len-1; j++) {
+        temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] = temp;
+      }
+      len--;
+    }
+    arr = arr.join(' ');
+    return arr;
+}
+
+// others
+function reverseWords(str){
+  return str.split(' ').reverse().join(' ');
+}
+
+function reverseWords(str){
+  return str.trim().split(' ').reverse().join(' '); // reverse those words
+}
+
+// task5 Categorize New Member
+//https://www.codewars.com/kata/categorize-new-member/train/javascript
+/*
+The Western Suburbs Croquet Club has two categories of membership, Senior and Open. They would like your help with an application form that will tell prospective members which category they will be placed.
+To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+Input
+Input will consist of a list of lists containing two items each. Each list contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap.
+*/
+
+// my
+function openOrSenior(data){
+  var result = [];
+  data.forEach(function(item){
+    if (item[0] >= 55 && item[1] > 7) {
+      result.push('Senior');
+    } else {
+      result.push('Open');
+    }
+  });
+  return result;
+}
+
+// others
+function openOrSenior(data){
+  function determineMembership(member){
+    return (member[0] >= 55 && member[1] > 7) ? 'Senior' : 'Open';
+  }
+  return data.map(determineMembership);
+}
+
+function openOrSenior(data){
+  return data.map(([age, handicap]) => (age > 54 && handicap > 7) ? 'Senior' : 'Open');
+}
+
+
